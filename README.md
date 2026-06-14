@@ -84,7 +84,9 @@ flutter build apk --release   # -> build/app/outputs/flutter-apk/app-release.apk
 flutter build apk --debug     # -> build/app/outputs/flutter-apk/app-debug.apk
 ```
 
-The Android `INTERNET` permission is included via the default Flutter manifest.
+The Android `INTERNET` permission is declared in `android/app/src/main/AndroidManifest.xml`.
+This is required for release/profile builds, since Flutter only adds it automatically to the
+debug manifest.
 
 ## Prebuilt APK
 

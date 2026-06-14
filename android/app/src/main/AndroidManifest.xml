@@ -1,4 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Required so release/profile builds can make network requests.
+         Flutter only adds this automatically to the debug manifest. -->
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:label="API Demo"
         android:name="${applicationName}"

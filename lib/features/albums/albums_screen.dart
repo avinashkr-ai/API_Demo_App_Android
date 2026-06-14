@@ -43,7 +43,7 @@ class AlbumsScreen extends ConsumerWidget {
                   ),
                   subtitle: Text('Album #${album.id}  -  by user ${album.userId}'),
                   trailing: const Icon(Icons.chevron_right),
-                  onTap: () => context.go('/albums/${album.id}'),
+                  onTap: () => context.push('/albums/${album.id}'),
                 ),
               );
             },

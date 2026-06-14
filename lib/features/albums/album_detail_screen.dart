@@ -44,7 +44,7 @@ class AlbumDetailScreen extends ConsumerWidget {
             itemBuilder: (context, index) {
               final photo = list[index];
               return GestureDetector(
-                onTap: () => context.go('/photos/${photo.id}'),
+                onTap: () => context.push('/photos/${photo.id}'),
                 child: Hero(
                   tag: 'photo-${photo.id}',
                   child: AppNetworkImage(

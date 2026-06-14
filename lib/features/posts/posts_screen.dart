@@ -65,7 +65,7 @@ class PostsScreen extends ConsumerWidget {
                     ),
                   ),
                   isThreeLine: true,
-                  onTap: () => context.go('/posts/${post.id}'),
+                  onTap: () => context.push('/posts/${post.id}'),
                 ),
               );
             },

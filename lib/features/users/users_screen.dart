@@ -30,7 +30,7 @@ class UsersScreen extends ConsumerWidget {
                   title: Text(user.name),
                   subtitle: Text('@${user.username}  -  ${user.email}'),
                   trailing: const Icon(Icons.chevron_right),
-                  onTap: () => context.go('/users/${user.id}'),
+                  onTap: () => context.push('/users/${user.id}'),
                 ),
               );
             },

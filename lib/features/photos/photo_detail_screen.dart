@@ -40,7 +40,7 @@ class PhotoDetailScreen extends ConsumerWidget {
                   ),
                   const SizedBox(height: 16),
                   FilledButton.tonalIcon(
-                    onPressed: () => context.go('/albums/${p.albumId}'),
+                    onPressed: () => context.push('/albums/${p.albumId}'),
                     icon: const Icon(Icons.collections_rounded),
                     label: Text('View album #${p.albumId}'),
                   ),

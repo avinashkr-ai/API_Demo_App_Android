@@ -66,7 +66,7 @@ class _SectionCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: InkWell(
-        onTap: () => context.go(section.route),
+        onTap: () => context.push(section.route),
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: Column(

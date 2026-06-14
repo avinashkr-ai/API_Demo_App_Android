@@ -29,7 +29,7 @@ class PostDetailScreen extends ConsumerWidget {
               const SizedBox(height: 12),
               author.when(
                 data: (u) => InkWell(
-                  onTap: () => context.go('/users/${u.id}'),
+                  onTap: () => context.push('/users/${u.id}'),
                   child: Row(
                     children: [
                       CircleAvatar(

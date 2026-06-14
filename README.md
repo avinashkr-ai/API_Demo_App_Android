@@ -47,21 +47,58 @@ lib/
   widgets/                   AsyncValueWidget (loading/error/retry), AppNetworkImage
 ```
 
-## Running
+## Navigation
+
+The app uses `go_router` with a push-based stack: the Home dashboard opens each
+section, and every other screen (lists, details, and cross-links such as
+post -> author or photo -> album) is pushed on top. As a result, every non-home
+screen shows a back arrow in the app bar, and backing out always returns to the
+Home dashboard.
+
+## Environment setup
+
+This project was set up with Flutter 3.44.2 and OpenJDK 17. On macOS (Homebrew),
+configure the toolchain once per terminal session:
+
+```bash
+export JAVA_HOME=/opt/homebrew/opt/openjdk@17
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH="$JAVA_HOME/bin:/opt/homebrew/bin:$ANDROID_HOME/platform-tools:$PATH"
+cd "<path-to>/api_demo_app"
+```
+
+## Running on an emulator
 
 ```bash
 flutter pub get
-flutter run                 # on an Android emulator or device
+flutter emulators --launch Pixel_9_Pro   # start an emulator and wait for it to boot
+flutter run                              # build + install + hot reload (debug)
 ```
+
+While running: `r` = hot reload, `R` = hot restart, `q` = quit.
 
 ## Building the APK
 
 ```bash
-flutter build apk --debug   # or: flutter build apk --release
-# Output: build/app/outputs/flutter-apk/app-debug.apk
+flutter build apk --release   # -> build/app/outputs/flutter-apk/app-release.apk
+flutter build apk --debug     # -> build/app/outputs/flutter-apk/app-debug.apk
 ```
 
 The Android `INTERNET` permission is included via the default Flutter manifest.
+
+## Prebuilt APK
+
+A ready-to-install release APK is kept (outside the git-ignored `build/` folder) at:
+
+```
+dist/api_demo_app-v1.0.0-release.apk
+```
+
+Install it on a running emulator or connected device with:
+
+```bash
+adb install -r dist/api_demo_app-v1.0.0-release.apk
+```
 
 ## iOS (later)
 

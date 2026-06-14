@@ -42,8 +42,8 @@ class UserDetailScreen extends ConsumerWidget {
             _InfoTile(Icons.email_outlined, 'Email', u.email),
             _InfoTile(Icons.phone_outlined, 'Phone', u.phone),
             _InfoTile(Icons.language_outlined, 'Website', u.website),
-            _InfoTile(Icons.location_on_outlined, 'Address',
-                u.address.formatted),
+            _InfoTile(
+                Icons.location_on_outlined, 'Address', u.address.formatted),
             _InfoTile(Icons.business_outlined, 'Company',
                 '${u.company.name}\n${u.company.catchPhrase}'),
             const SizedBox(height: 24),

@@ -32,6 +32,16 @@ class ApiService {
     return _mapList(res, Photo.fromJson);
   }
 
+  Future<Photo> createPhoto(Photo photo) async {
+    final res = await _dio.post('/photos', data: {
+      'albumId': photo.albumId,
+      'title': photo.title,
+      'url': photo.url,
+      'thumbnailUrl': photo.thumbnailUrl,
+    });
+    return Photo.fromJson(res.data as Map<String, dynamic>);
+  }
+
   Future<Photo> getPhoto(int id) async {
     final res = await _dio.get('/photos/$id');
     return Photo.fromJson(res.data as Map<String, dynamic>);
@@ -44,6 +54,14 @@ class ApiService {
       queryParameters: userId != null ? {'userId': userId} : null,
     );
     return _mapList(res, Album.fromJson);
+  }
+
+  Future<Album> createAlbum(Album album) async {
+    final res = await _dio.post('/albums', data: {
+      'userId': album.userId,
+      'title': album.title,
+    });
+    return Album.fromJson(res.data as Map<String, dynamic>);
   }
 
   Future<Album> getAlbum(int id) async {
@@ -60,6 +78,15 @@ class ApiService {
     return _mapList(res, Post.fromJson);
   }
 
+  Future<Post> createPost(Post post) async {
+    final res = await _dio.post('/posts', data: {
+      'userId': post.userId,
+      'title': post.title,
+      'body': post.body,
+    });
+    return Post.fromJson(res.data as Map<String, dynamic>);
+  }
+
   Future<Post> getPost(int id) async {
     final res = await _dio.get('/posts/$id');
     return Post.fromJson(res.data as Map<String, dynamic>);
@@ -69,6 +96,16 @@ class ApiService {
   Future<List<User>> getUsers() async {
     final res = await _dio.get('/users');
     return _mapList(res, User.fromJson);
+  }
+
+  Future<User> createUser(User user) async {
+    final res = await _dio.post('/users', data: {
+      'name': user.name,
+      'username': user.username,
+      'email': user.email,
+      'phone': user.phone,
+    });
+    return User.fromJson(res.data as Map<String, dynamic>);
   }
 
   Future<User> getUser(int id) async {
@@ -85,6 +122,16 @@ class ApiService {
     return _mapList(res, Comment.fromJson);
   }
 
+  Future<Comment> createComment(Comment comment) async {
+    final res = await _dio.post('/comments', data: {
+      'postId': comment.postId,
+      'name': comment.name,
+      'email': comment.email,
+      'body': comment.body,
+    });
+    return Comment.fromJson(res.data as Map<String, dynamic>);
+  }
+
   // ---- Todos ----
   Future<List<Todo>> getTodos({int? userId}) async {
     final res = await _dio.get(
@@ -92,5 +139,14 @@ class ApiService {
       queryParameters: userId != null ? {'userId': userId} : null,
     );
     return _mapList(res, Todo.fromJson);
+  }
+
+  Future<Todo> createTodo(Todo todo) async {
+    final res = await _dio.post('/todos', data: {
+      'userId': todo.userId,
+      'title': todo.title,
+      'completed': todo.completed,
+    });
+    return Todo.fromJson(res.data as Map<String, dynamic>);
   }
 }

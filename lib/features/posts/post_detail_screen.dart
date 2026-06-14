@@ -70,8 +70,7 @@ class PostDetailScreen extends ConsumerWidget {
                               subtitle: Padding(
                                 padding: const EdgeInsets.only(top: 4),
                                 child: Column(
-                                  crossAxisAlignment:
-                                      CrossAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(c.email,
                                         style: Theme.of(context)

@@ -96,3 +96,39 @@ class TodoOverrides extends StateNotifier<Map<int, bool>> {
 
   bool resolve(int id, bool original) => state[id] ?? original;
 }
+
+/// In-memory store of records created via the "+" button on each screen.
+/// JSONPlaceholder fakes writes (it returns a new id but never persists), so
+/// we keep created items locally and show them at the top of each list.
+class ListStore<T> extends StateNotifier<List<T>> {
+  ListStore() : super(const []);
+
+  void add(T item) => state = [item, ...state];
+}
+
+final localPhotosProvider =
+    StateNotifierProvider<ListStore<Photo>, List<Photo>>(
+  (ref) => ListStore<Photo>(),
+);
+
+final localAlbumsProvider =
+    StateNotifierProvider<ListStore<Album>, List<Album>>(
+  (ref) => ListStore<Album>(),
+);
+
+final localPostsProvider = StateNotifierProvider<ListStore<Post>, List<Post>>(
+  (ref) => ListStore<Post>(),
+);
+
+final localUsersProvider = StateNotifierProvider<ListStore<User>, List<User>>(
+  (ref) => ListStore<User>(),
+);
+
+final localCommentsProvider =
+    StateNotifierProvider<ListStore<Comment>, List<Comment>>(
+  (ref) => ListStore<Comment>(),
+);
+
+final localTodosProvider = StateNotifierProvider<ListStore<Todo>, List<Todo>>(
+  (ref) => ListStore<Todo>(),
+);
